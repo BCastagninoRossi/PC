@@ -117,5 +117,10 @@
 
 ###
 
+# f-Strings
 
+# una forma mas facil de concatenar stings y variables
+
+# ej: print( f'{variable} string')
+# si tengo un float y quiero limitar la cantidad de decimales con f strings puedo hacer {variable:.2f} . le indica que voy a querer limitar los decimales, el numero 2 indica la cantidad de decimales que quiero y f le indica que la variable que quiero obtener es float
 
