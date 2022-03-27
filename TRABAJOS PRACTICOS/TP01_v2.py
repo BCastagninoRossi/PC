@@ -135,17 +135,16 @@ def main():
     player2 = input('Ingrese el nombre del segundo jugador: ')
     while not player2:
         player2 = input('Ha ingresado un término inválido, ingrese el nombre nuevamente: ')
-    score1 = 0
-    score2 = 0
+    
     if mode.lower() == 'manual':
-        manualgame(player1, player2, score1, score2)
+        manualgame(player1, player2, 0, 0)
         return
     else:
         fullmatch = input("Ingrese 'COMPLETO' para ver el desglose del game o 'RESULTADO' para ver solamente el ganador: \n")
         while not fullmatch or (fullmatch.lower() != 'completo' and fullmatch.lower() != 'resultado'):
             fullmatch = input('Ha ingresado un modo inválido, intente nuevamente: ')
             continue
-        autogame(player1, player2, score1, score2, fullmatch)
+        autogame(player1, player2, 0, 0, fullmatch)
         return
 
     
