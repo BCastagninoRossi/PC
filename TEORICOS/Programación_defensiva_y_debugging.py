@@ -99,11 +99,107 @@ Donny Don't!
     
 MELD: app que sirve para comparar 2 archivos (versiones distintas) uno al lado del otro, comparar y cambiar entre ellos
 
-###EXEPCIONES
+###EXEPCIONES-> son errores en la ejecucion
 
+Es lo queocurre cuando la ejecucion llega a una CONDICION INESPERADA
+-IndexError: intentamos acceder a una secuencia mas alla de sus elementos
+-VER POWER QUE FALTAN VARIOSS
 
+Que hacemos con las exepciones?
+-Fallar silenciosamente(en realidad se puede con cualquier error, no solo exepciones):
+    *Remplazar los valores que fallaron por valores por omision o simplemente continuar
+    *No esta bueno! porque el usuario no se entera y los errores NUNCA DEBERIAN PASAR silenciosamente
+-Retornar un valor que indique ERROR:
+    *Qué valor elegimos? -1? a veces retornar -1 permitiria continuar el programa...
+    *No es una mala manera de operar pero hay que pensar mucho en el valor...
+-Parar la ejecucion y Senalar la condicion que fallo:
+    *LANZAR EXEPCIONES para controlar el flujo de la ejecucion
+    *No se retornan valores especiales
+    *Se lanza una exepcion cuando no podemos producir un resultado consistente con la especificacion de la funcion:
+        raise nombredelaexepcion('descripcion')
+    *Ej: def sqrt(x, eps):
+            if x<0:
+                raise ValueError('x no puede ser menor a 0')
+    
+    *Python nos permite 'atrapar' las exepciones:
+        try: 
+            <instrucciones>
+        except:
+            <instrucciones>
+            
+        Exepciones que saltan del try son atrapadas por el exept
+        Ej: print('Vamos a dividir x por y')
+            try: 
+                x = int(input('Ingrese el valor de x:'))
+                y = int(input('Ingrese el valor de y: '))
+                print (x/y)
+            except:
+                print('Algo no salio bien, revise los inputs')
+                
+        
+        
 
+- Manejo de EXEPCIONES ESPECIFICAS:
+    *Ej:print('Vamos a dividir x por y')
+        try: 
+            x = int(input('Ingrese el valor de x:'))
+            y = int(input('Ingrese el valor de y: '))
+            print (x/y)
+        except ValueError:
+            print('La entrada no se pudo convertir a entero')
+        except ZeroDivisionError:
+            print('No se puede dividir por cero')
+        except:
+            print('No se que pasó')
+        
+- Manejo de exepciones - COMPLETA:
+    try:
+        <Body> aca tienen que estar las cosas que puedan tirar error, hay que tratar de mantenerlo lo mas reducido posible
+    except ValueError as <nombre>:
+        <excepcion>
+    except KeyboardInterrupt as <nombre>:
+        <excepcion>
+        tipo:
+            raise exepcion('lo que sea la excepcion')
+    else:
+        Esto solo se ejecuta si el try se ejecuta correctamente sin excepciones
+    finally:
+        Se ejecuta SIEMPRE, aunque el try haya fallado, incluso si se ejecuto un break, continue o return
+    
+ES IMPORTANTE SABER que aquello que quede escrito fuera de las excepciones se va a ejecutar igual!!! (o a intentar ejecutar)
+Por esto la idea es tener todos los bloques dentro de try y except s
+o.....
 
+Como los try y except tienen alto costo de procesamiento
+
+###VALIDACIONES
+
+-Validar precondiciones - nada, falla
+* Ver PPT
+
+- ASSERTIONS:
+    buen ejemplo de programacion defensiva
+    puede simplificar encontrar bugs apenas ingresados
+    es como lanzar una exepcion y que el usuario ingrese datos incorrectos
+    Se usan para:
+        comprobar tipos de argumentos o valores
+        comprobar que los invariantes de los datos se cumplan
+        comprobar restricciones de valores de retorno
+        coprobar que no se violen requerimientos de las funciones o programas
+    el assert CORTA la ejecucion de lo que sigue
+    
+    ej:
+        def average (grades):
+            assert len(grades) != 0, 'NO GRADES DATA'
+            return sum(grades) / len(grades)
+        
+        
+    Se pueden usar durante el DESARROLLO del codigo pero a la hora de meterlo en produccion SE PUEDE DESACTIVAR para mejorar el desempeño
+
+-Validar entradas de usuario - ver PPT
+
+            
+        
 
 
 
